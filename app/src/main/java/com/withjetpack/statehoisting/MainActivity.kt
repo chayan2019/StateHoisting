@@ -42,6 +42,8 @@ class MainActivity : ComponentActivity() {
     fun ShowWidget() {
         val viewModel: StateViewModel by viewModels()
 
+        val name = rememberSaveable { mutableStateOf("")}
+
         Column(
             modifier = Modifier.padding(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally
@@ -51,9 +53,9 @@ class MainActivity : ComponentActivity() {
             }
 
             OutlinedTextField(
-                value = viewModel.name.value
+                value = name.value
                 ,onValueChange = {
-                    viewModel.name.value = it
+                    name.value = it
                 },
                 label = {
                     Text(text = "Name")
